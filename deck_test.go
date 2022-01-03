@@ -18,11 +18,11 @@ func TestNewDeck(t *testing.T) {
 func TestDeck_Shuffle(t *testing.T) {
 	deck := NewDeck("standard")
 	oldDeck := NewDeck("standard")
-	copy(deck.cards, oldDeck.cards)
+	copy(deck.Cards, oldDeck.Cards)
 
 	deck.Shuffle()
 
-	if reflect.DeepEqual(deck.cards, oldDeck.cards) {
+	if reflect.DeepEqual(deck.Cards, oldDeck.Cards) {
 		t.Error("Expected different card ordering after shuffle, got same.")
 	}
 
@@ -41,8 +41,8 @@ func TestDeck_DefaultSort(t *testing.T) {
 
 	// Sort the deck
 	deck.DefaultSort()
-	if !(deck.cards[0] == firstCard && deck.cards[deck.Size()-1] == lastCard) {
-		t.Error(fmt.Sprintf("Expected first card after sorting %v, got %v", firstCard, deck.cards[0]))
+	if !(deck.Cards[0] == firstCard && deck.Cards[deck.Size()-1] == lastCard) {
+		t.Error(fmt.Sprintf("Expected first card after sorting %v, got %v", firstCard, deck.Cards[0]))
 	}
 }
 
@@ -58,13 +58,13 @@ func TestDeck_Sort(t *testing.T) {
 	deck.Swap(deck.Size()-1, 1+rand.Intn(51))
 
 	less := func(i, j int) bool {
-		return deck.cards[i].Value() < deck.cards[j].Value()
+		return deck.Cards[i].Value() < deck.Cards[j].Value()
 	}
 	// Sort the deck using custom function
 	deck.Sort(less)
 
-	if !(deck.cards[0] == firstCard && deck.cards[deck.Size()-1] == lastCard) {
-		t.Error(fmt.Sprintf("Expected first card after sorting %v, got %v", firstCard, deck.cards[0]))
+	if !(deck.Cards[0] == firstCard && deck.Cards[deck.Size()-1] == lastCard) {
+		t.Error(fmt.Sprintf("Expected first card after sorting %v, got %v", firstCard, deck.Cards[0]))
 	}
 
 }
@@ -80,7 +80,7 @@ func TestDeck_Filter(t *testing.T) {
 
 	deck.Filter(filter)
 
-	for _, card := range deck.cards {
+	for _, card := range deck.Cards {
 		if card.suit == Heart || card.rank == Queen {
 			continue
 		} else {
