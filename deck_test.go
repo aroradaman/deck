@@ -80,11 +80,21 @@ func TestDeck_Filter(t *testing.T) {
 
 	deck.Filter(filter)
 
-	for _, card := range deck.cards{
-		if card.suit == Heart || card.rank == Queen{
+	for _, card := range deck.cards {
+		if card.suit == Heart || card.rank == Queen {
 			continue
-		}else{
+		} else {
 			t.Error(fmt.Sprintf("Expected either Suit 'Heart' or Rank 'Queen', got %v", card))
 		}
+	}
+}
+
+func TestDeck_Add(t *testing.T) {
+	deckA := NewDeck("standard")
+	deckB := NewDeck("standard")
+
+	deckA.Add(deckB)
+	if deckA.Size() != 2*deckB.Size() {
+		t.Error(fmt.Sprintf("Expected %d cards, got %d.", 2*deckB.Size(), deckA.Size()))
 	}
 }

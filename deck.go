@@ -52,6 +52,10 @@ func (deck Deck) String() string {
 		"st Card: %v; Last Card: %v", deck.name, deck.cards[0], deck.cards[deck.Size()-1])
 }
 
+func (deck *Deck) Add(newDeck Deck) {
+	deck.cards = append(deck.cards, newDeck.cards...)
+}
+
 func (deck *Deck) Filter(filter func (card Card) bool) {
 	cards := make([]Card, 0)
 	for _, c := range deck.cards{
