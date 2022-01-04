@@ -5,9 +5,9 @@ import (
 )
 
 func ExampleCard() {
-	fmt.Println(Card{rank: Ace, suit: Spade})
-	fmt.Println(Card{rank: Two, suit: Heart})
-	fmt.Println(Card{rank: King, suit: Club})
+	fmt.Println(Card{Rank: Ace, Suit: Spade})
+	fmt.Println(Card{Rank: Two, Suit: Heart})
+	fmt.Println(Card{Rank: King, Suit: Club})
 
 	// Output:
 	// <Card: Ace of Spades>

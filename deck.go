@@ -16,7 +16,7 @@ func NewDeck(name string) Deck {
 	var cards []Card
 	for _, suit := range SUITS {
 		for _, rank := range RANKS {
-			cards = append(cards, Card{suit: suit, rank: rank})
+			cards = append(cards, Card{Suit: suit, Rank: rank})
 		}
 	}
 	return Deck{Name: name, Cards: cards}

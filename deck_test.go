@@ -30,7 +30,7 @@ func TestDeck_Shuffle(t *testing.T) {
 
 func TestDeck_DefaultSort(t *testing.T) {
 	deck := NewDeck("standard")
-	firstCard, lastCard := Card{rank: Two, suit: Heart}, Card{rank: Ace, suit: Spade}
+	firstCard, lastCard := Card{Rank: Two, Suit: Heart}, Card{Rank: Ace, Suit: Spade}
 	deck.Shuffle()
 
 	// Swap first card with random card
@@ -48,7 +48,7 @@ func TestDeck_DefaultSort(t *testing.T) {
 
 func TestDeck_Sort(t *testing.T) {
 	deck := NewDeck("standard")
-	firstCard, lastCard := Card{rank: Two, suit: Heart}, Card{rank: Ace, suit: Spade}
+	firstCard, lastCard := Card{Rank: Two, Suit: Heart}, Card{Rank: Ace, Suit: Spade}
 	deck.Shuffle()
 
 	// Swap first card with random card
@@ -72,7 +72,7 @@ func TestDeck_Sort(t *testing.T) {
 func TestDeck_Filter(t *testing.T) {
 	deck := NewDeck("standard")
 	filter := func(card Card) bool {
-		if card.suit == Heart || card.rank == Queen {
+		if card.Suit == Heart || card.Rank == Queen {
 			return true
 		}
 		return false
@@ -81,7 +81,7 @@ func TestDeck_Filter(t *testing.T) {
 	deck.Filter(filter)
 
 	for _, card := range deck.Cards {
-		if card.suit == Heart || card.rank == Queen {
+		if card.Suit == Heart || card.Rank == Queen {
 			continue
 		} else {
 			t.Error(fmt.Sprintf("Expected either Suit 'Heart' or Rank 'Queen', got %v", card))
