@@ -17,3 +17,7 @@ var SUITS = [...]Suit{Spade, Club, Diamond, Heart}
 func (s Suit) String() string {
 	return s.name
 }
+
+func (s Suit) Value() int {
+	return int(s.index)
+}

@@ -5,14 +5,23 @@ import (
 )
 
 type Card struct {
-	Rank Rank
-	Suit Suit
+	rank Rank
+	suit Suit
 }
 
-func (card Card) String() string {
-	return fmt.Sprintf("<Card: %s of %ss>", card.Rank, card.Suit)
+func (c Card) String() string {
+	return fmt.Sprintf("<Card: %s of %ss>", c.rank, c.suit)
 }
 
-func (card Card) Value() uint8 {
-	return card.Suit.index*13 + card.Rank.index
+func (c Card) Value() uint8 {
+	return c.suit.index*13 + c.rank.index
 }
+
+func (c Card) Rank() Rank{
+	return c.rank
+}
+
+func (c Card) Suit() Suit{
+	return c.suit
+}
+

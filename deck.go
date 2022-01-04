@@ -16,7 +16,7 @@ func NewDeck(name string) Deck {
 	var cards []Card
 	for _, suit := range SUITS {
 		for _, rank := range RANKS {
-			cards = append(cards, Card{Suit: suit, Rank: rank})
+			cards = append(cards, Card{suit: suit, rank: rank})
 		}
 	}
 	return Deck{Name: name, Cards: cards}
@@ -43,37 +43,37 @@ func (deck Deck) DefaultSort() {
 	sort.Slice(deck.Cards, deck.Less)
 }
 
-func (deck Deck) Sort(less func(i, j int) bool) {
-	sort.Slice(deck.Cards, less)
+func (d Deck) Sort(less func(i, j int) bool) {
+	sort.Slice(d.Cards, less)
 }
 
-func (deck Deck) String() string {
+func (d Deck) String() string {
 	return fmt.Sprintf("<Deck: %s; Fir"+
-		"st Card: %v; Last Card: %v>", deck.Name, deck.Cards[0], deck.Cards[deck.Size()-1])
+		"st Card: %v; Last Card: %v>", d.Name, d.Cards[0], d.Cards[d.Size()-1])
 }
 
-func (deck *Deck) Add(newDeck Deck) {
-	deck.Cards = append(deck.Cards, newDeck.Cards...)
+func (d *Deck) Add(newDeck Deck) {
+	d.Cards = append(d.Cards, newDeck.Cards...)
 }
 
-func (deck *Deck) Filter(filter func(card Card) bool) {
+func (d *Deck) Filter(filter func(card Card) bool) {
 	cards := make([]Card, 0)
-	for _, c := range deck.Cards {
+	for _, c := range d.Cards {
 		if filter(c) {
 			cards = append(cards, c)
 		}
 	}
-	deck.Cards = cards
+	d.Cards = cards
 }
 
-func (deck *Deck) Draw() Card {
-	card := deck.Cards[deck.Size()-1]
-	deck.Cards = deck.Cards[:deck.Size()-1]
+func (d *Deck) Draw() Card {
+	card := d.Cards[d.Size()-1]
+	d.Cards = d.Cards[:d.Size()-1]
 	return card
 }
 
-func (deck Deck) IsEmpty() bool {
-	if len(deck.Cards) == 0 {
+func (d Deck) IsEmpty() bool {
+	if len(d.Cards) == 0 {
 		return true
 	}
 	return false

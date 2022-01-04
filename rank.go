@@ -26,3 +26,7 @@ var RANKS = [...]Rank{Ace, King, Queen, Jack, Ten, Nine, Eight, Seven, Six, Five
 func (r Rank) String() string {
 	return r.name
 }
+
+func (r Rank) Value()int{
+	return int(r.index)
+}
