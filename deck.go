@@ -65,3 +65,16 @@ func (deck *Deck) Filter(filter func(card Card) bool) {
 	}
 	deck.Cards = cards
 }
+
+func (deck *Deck) Draw() Card {
+	card := deck.Cards[deck.Size()-1]
+	deck.Cards = deck.Cards[:deck.Size()-1]
+	return card
+}
+
+func (deck Deck) IsEmpty() bool {
+	if len(deck.Cards) == 0 {
+		return true
+	}
+	return false
+}

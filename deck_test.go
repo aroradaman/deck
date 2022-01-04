@@ -98,3 +98,27 @@ func TestDeck_Add(t *testing.T) {
 		t.Error(fmt.Sprintf("Expected %d cards, got %d.", 2*deckB.Size(), deckA.Size()))
 	}
 }
+
+func TestDeck_Draw(t *testing.T) {
+	deck := NewDeck("standard")
+	deck.Draw()
+	if deck.Size() != 51 {
+		t.Error(fmt.Sprintf("Expected 51 cards after drawing one, got %d", deck.Size()))
+	}
+}
+
+func TestDeck_IsEmpty(t *testing.T) {
+	deck := NewDeck("standard")
+
+	if deck.IsEmpty() {
+		t.Error("Expected non empty deck, got empty one.")
+	}
+
+	for i := 0; i < 52; i++ {
+		deck.Draw()
+	}
+
+	if !deck.IsEmpty() {
+		t.Error("Expected empty deck, got non empty one.")
+	}
+}

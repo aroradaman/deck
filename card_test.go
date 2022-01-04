@@ -10,7 +10,7 @@ func ExampleCard() {
 	fmt.Println(Card{rank: King, suit: Club})
 
 	// Output:
-	// Ace of Spades
-	// Two of Hearts
-	// King of Clubs
+	// <Card: Ace of Spades>
+	// <Card: Two of Hearts>
+	// <Card: King of Clubs>
 }
