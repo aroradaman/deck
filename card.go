@@ -10,7 +10,7 @@ type Card struct {
 }
 
 func (card Card) String() string {
-	return fmt.Sprintf("%s of %ss", card.rank, card.suit)
+	return fmt.Sprintf("<Card: %s of %ss>", card.rank, card.suit)
 }
 
 func (card Card) Value() uint8 {

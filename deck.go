@@ -48,8 +48,8 @@ func (deck Deck) Sort(less func(i, j int) bool) {
 }
 
 func (deck Deck) String() string {
-	return fmt.Sprintf("Deck %s; Fir"+
-		"st Card: %v; Last Card: %v", deck.Name, deck.Cards[0], deck.Cards[deck.Size()-1])
+	return fmt.Sprintf("<Deck: %s; Fir"+
+		"st Card: %v; Last Card: %v>", deck.Name, deck.Cards[0], deck.Cards[deck.Size()-1])
 }
 
 func (deck *Deck) Add(newDeck Deck) {
